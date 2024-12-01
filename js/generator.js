@@ -9,6 +9,10 @@ class BandWiki {
         const {
             genre = this.randomFrom(WikiData.pools.genres.metal),
             location = this.randomFrom(WikiData.pools.cities.US),
+            guitar = null,
+            bass = null,
+            vocals = null,
+            drums = null,
             album = null
         } = params;
 
@@ -28,7 +32,65 @@ class BandWiki {
 
         // Generate band history timeline
         const timeline = this.generateTimeline(startYear, bandName, origin);
-        const members = this.generateMembers(startYear);
+        
+        // Generate members list
+        const members = {
+            current: [],
+            former: []
+        };
+
+        // Add specified members first
+        if (vocals) members.current.push({ name: vocals.replace(/_/g, ' '), instrument: "vocals", years: `${startYear}–present` });
+        if (guitar) members.current.push({ name: guitar.replace(/_/g, ' '), instrument: "guitar", years: `${startYear}–present` });
+        if (bass) members.current.push({ name: bass.replace(/_/g, ' '), instrument: "bass", years: `${startYear}–present` });
+        if (drums) members.current.push({ name: drums.replace(/_/g, ' '), instrument: "drums", years: `${startYear}–present` });
+
+        // Check which instruments are missing and add random members for them
+        const existingInstruments = members.current.map(m => m.instrument);
+        
+        if (!existingInstruments.includes('vocals')) {
+            members.current.push({
+                name: this.generatePersonName(),
+                instrument: "vocals",
+                years: `${startYear}–present`
+            });
+        }
+        
+        if (!existingInstruments.includes('guitar')) {
+            members.current.push({
+                name: this.generatePersonName(),
+                instrument: "guitar",
+                years: `${startYear}–present`
+            });
+        }
+        
+        if (!existingInstruments.includes('bass')) {
+            members.current.push({
+                name: this.generatePersonName(),
+                instrument: "bass",
+                years: `${startYear}–present`
+            });
+        }
+        
+        if (!existingInstruments.includes('drums')) {
+            members.current.push({
+                name: this.generatePersonName(),
+                instrument: "drums",
+                years: `${startYear}–present`
+            });
+        }
+
+        // Generate some former members
+        const formerCount = Math.floor(Math.random() * 3);
+        for (let i = 0; i < formerCount; i++) {
+            const joinYear = startYear + Math.floor(Math.random() * 3);
+            const leaveYear = joinYear + Math.floor(Math.random() * 10) + 2;
+            members.former.push({
+                name: this.generatePersonName(),
+                instrument: this.randomFrom(["vocals", "guitar", "bass", "drums"]),
+                years: `${joinYear}–${leaveYear}`
+            });
+        }
 
         // Generate discography
         const discography = this.generateDiscography(startYear, album);
@@ -150,33 +212,6 @@ class BandWiki {
         return this.randomFrom(words) + " " + this.randomFrom(words);
     }
 
-    generateMembers(startYear) {
-        const roles = [
-            "vocals", "guitar", "bass", "drums",
-            "electronics", "synthesizer", "noise"
-        ];
-
-        const currentCount = 3 + Math.floor(Math.random() * 3); // 3-5 members
-        const formerCount = Math.floor(Math.random() * 5); // 0-4 former members
-
-        return {
-            current: Array(currentCount).fill().map(() => ({
-                name: this.generatePersonName(),
-                instrument: this.randomFrom(roles),
-                years: `${startYear}–present`
-            })),
-            former: Array(formerCount).fill().map(() => {
-                const joinYear = startYear + Math.floor(Math.random() * 3);
-                const leaveYear = joinYear + Math.floor(Math.random() * 10) + 2;
-                return {
-                    name: this.generatePersonName(),
-                    instrument: this.randomFrom(roles),
-                    years: `${joinYear}–${leaveYear}`
-                };
-            })
-        };
-    }
-
     // Helper methods
     randomFrom(array) {
         return array[Math.floor(Math.random() * array.length)];
@@ -203,58 +238,39 @@ class BandWiki {
         const albums = [];
         let currentYear = startYear;
 
-        // Demo/EP
+        // Demo
         albums.push({
             year: currentYear,
-            type: "Demo",
             title: this.generateAlbumName(),
+            type: "Demo",
             label: "Self-released",
-            notes: this.randomFrom([
-                "Limited to 100 cassettes",
-                "Released digitally on Bandcamp",
-                "Limited CDR release",
-                "Underground tape trading only"
-            ])
+            notes: "Limited cassette release"
         });
 
+        // First album (either specified or random)
         currentYear += 1;
-
-        // First album (either specific or random)
         albums.push({
             year: currentYear,
-            type: "Studio album",
             title: specificAlbum ? specificAlbum.replace(/_/g, ' ') : this.generateAlbumName(),
+            type: "Studio album",
             label: this.randomFrom(WikiData.pools.labels),
-            notes: this.randomFrom([
-                "First full-length release",
-                "Recorded live to tape",
-                "Produced by " + this.generatePersonName(),
-                "Featured guest appearances from " + this.generatePersonName()
-            ])
+            notes: "First full-length release"
         });
 
-        // Generate 2-4 more albums
-        const additionalAlbums = 2 + Math.floor(Math.random() * 3);
+        // Add 2-3 more random albums
+        const additionalAlbums = 2 + Math.floor(Math.random() * 2);
         for (let i = 0; i < additionalAlbums; i++) {
             currentYear += 1 + Math.floor(Math.random() * 2);
             albums.push({
                 year: currentYear,
-                type: this.randomFrom([
-                    "Studio album",
-                    "EP",
-                    "Split album",
-                    "Live album"
-                ]),
                 title: this.generateAlbumName(),
+                type: "Studio album",
                 label: this.randomFrom(WikiData.pools.labels),
                 notes: this.randomFrom([
-                    "Recorded at " + this.randomFrom(["Electrical Audio", "GodCity", "Soma Studios"]),
+                    "Recorded live to tape",
                     "Produced by " + this.generatePersonName(),
-                    "Featured collaborative tracks with " + this.generateBandName(),
-                    "Limited vinyl release of 500 copies",
-                    "Recorded during quarantine",
-                    "Mixed by " + this.generatePersonName(),
-                    "Mastered at " + this.randomFrom(["Mammoth Sound", "GodCity", "Machines with Magnets"])
+                    "Featured guest appearances",
+                    "Limited vinyl release"
                 ])
             });
         }

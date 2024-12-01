@@ -15,7 +15,6 @@ class WikiDisplay {
             ${this.renderHistory(bandData)}
             ${this.renderMembers(bandData)}
             ${this.renderDiscography(bandData)}
-            ${this.renderReferences(bandData)}
         `;
 
         document.getElementById('article-content').innerHTML = content;
@@ -108,20 +107,23 @@ class WikiDisplay {
     }
 
     static renderMembers(bandData) {
+        const currentMembers = bandData.members?.current || [];
+        const formerMembers = bandData.members?.former || [];
+
         return `
             <h2>Members</h2>
             
             <h3>Current members</h3>
             <ul>
-                ${bandData.members.current.map(member => `
+                ${currentMembers.map(member => `
                     <li>${member.name} – ${member.instrument} (${member.years})</li>
                 `).join('')}
             </ul>
 
-            ${bandData.members.former.length ? `
+            ${formerMembers.length ? `
                 <h3>Former members</h3>
                 <ul>
-                    ${bandData.members.former.map(member => `
+                    ${formerMembers.map(member => `
                         <li>${member.name} – ${member.instrument} (${member.years})</li>
                     `).join('')}
                 </ul>
@@ -155,7 +157,7 @@ class WikiDisplay {
                         <td><i>${album.title}</i></td>
                         <td>${album.type}</td>
                         <td>${album.label}</td>
-                        <td>${album.notes}</td>
+                        <td>${album.notes || ''}</td>
                     </tr>
                 `).join('')}
             </table>
