@@ -15,46 +15,52 @@ class WikiDisplay {
             { first: punkBand1, second: punkBand2 }
         ];
 
-        const connectors = ['of', 'from', 'in', 'under', 'beyond', 'and', 'Against', 'Beneath', 'upon', 'through', 'Within', 'Before', 'After', 'Behind', 'Beside', 'Between', 'Among', 'Without', 'Above', 'Below'];
-        const prefixes = ['The', 'Ancient', 'Eternal', 'Ultimate', 'Supreme', 'Immortal', 'Divine', 'Infernal', 'Celestial', 'Mighty', 'Glorious', 'Infinite', 'Legendary', 'Mystical', 'Sacred'];
+        const connectors = ['of', 'from', 'in', 'under', 'Beyond', 'and', 'Against', 'Beneath', 'upon', 'through', 'Within', 'Before', 'After', 'Behind', 'Beside', 'Between', 'Among', 'Without', 'Above', 'Below'];
+        const prefixes = ['The', 'Ancient', 'Eternal', 'Ultimate', 'Supreme', 'Primitive', 'Celestial', 'Divine', 'Heretical', 'Toxic', 'Fatal'];
         
+        // Helper to check if word needs to be joined without space
+        const shouldJoin = (word) => {
+            return word.match(/^(tana|consin|vada|achusetts|orado|ifornia|onya)$/);
+        };
+
         const patterns = [
             // Basic two-word
             () => {
                 const genre = this.randomFrom(genres);
-                return `${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}`;
+                const word1 = this.randomFrom(genre.first);
+                const word2 = this.randomFrom(genre.second);
+                return shouldJoin(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
             },
             // Three-word with connector
             () => {
                 const genre = this.randomFrom(genres);
                 return `${this.randomFrom(genre.first)}_${this.randomFrom(connectors)}_${this.randomFrom(genre.second)}`;
             },
-            // Double first words
-            () => {
-                const genre = this.randomFrom(genres);
-                return `${this.randomFrom(genre.first)}_${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}`;
-            },
-            // Mix genres
+            // Mix genres with possible joining
             () => {
                 const genre1 = this.randomFrom(genres);
                 const genre2 = this.randomFrom(genres);
-                return `${this.randomFrom(genre1.first)}_${this.randomFrom(genre2.second)}`;
+                const word1 = this.randomFrom(genre1.first);
+                const word2 = this.randomFrom(genre2.second);
+                return shouldJoin(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
             },
             // With 'The'
             () => {
                 const genre = this.randomFrom(genres);
-                return `The_${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}`;
+                const word2 = this.randomFrom(genre.second);
+                return shouldJoin(word2) ? 
+                    `The_${this.randomFrom(genre.first)}${word2}` : 
+                    `The_${this.randomFrom(genre.first)}_${word2}`;
             },
-            // Double second words
+            // Prefix with possible joining
             () => {
                 const genre = this.randomFrom(genres);
-                return `${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}_${this.randomFrom(genre.second)}`;
+                const word2 = this.randomFrom(genre.second);
+                return shouldJoin(word2) ? 
+                    `${this.randomFrom(prefixes)}_${this.randomFrom(genre.first)}${word2}` : 
+                    `${this.randomFrom(prefixes)}_${this.randomFrom(genre.first)}_${word2}`;
             },
-            // Prefix with connector
-            () => {
-                const genre = this.randomFrom(genres);
-                return `${this.randomFrom(prefixes)}_${this.randomFrom(genre.first)}_${this.randomFrom(connectors)}_${this.randomFrom(genre.second)}`;
-            }
+            // Double adjective with
         ];
 
         return this.randomFrom(patterns)();

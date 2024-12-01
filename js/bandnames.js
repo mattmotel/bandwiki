@@ -13,7 +13,7 @@ var metalBand1 = [
     "Mahogany",
     "Lucifer's",
     "Crimson",
-    // "Van",
+    // "Van", 
     "Rotting",
 
     "White",
@@ -80,7 +80,15 @@ var metalBand1 = [
     "Hell",
     "Immortal",
     "Nightmare",
-    "Omen"
+    "Omen",
+    "Fluffy",
+    "Sparkly",
+    "Cuddly",
+    "Rainbow",
+    "Kitten",
+    "Bunny",
+    "Unicorn",
+    "Glitter"
 
 ];
 var metalBand2 = [
@@ -170,7 +178,15 @@ var metalBand2 = [
     "Fiend",
     "Grave",
     "Hell",
-    "Immortal"
+    "Immortal",
+    "Pancake",
+    "Muffin",
+    "Cupcake",
+    "Sprinkles",
+    "Teddy",
+    "Puppy",
+    "Kitty",
+    "Butterfly"
 
 
 
@@ -258,7 +274,15 @@ var powerMetalBand1 = [
     "Brave",
     "Crimson",
     "Destiny",
-    "Epic"
+    "Epic",
+    "Sparkle",
+    "Glitter",
+    "Sunshine",
+    "Rainbow",
+    "Unicorn",
+    "Fairy",
+    "Princess",
+    "Magical"
 
 
 ];
@@ -369,7 +393,15 @@ var powerMetalBand2 = [
     "Zeal",
     "Banner",
     "Charge",
-    "Dawn"
+    "Dawn",
+    "Sparkles",
+    "Cupcake",
+    "Kitten",
+    "Puppy",
+    "Bunny",
+    "Unicorn",
+    "Rainbow",
+    "Glitter"
 
 ];
 var grindBand1 = [
@@ -446,7 +478,15 @@ var grindBand1 = [
     "Scorpion",
     "Rat",
     "Toad",
-    "Slug"
+    "Slug",
+    "Tickle",
+    "Giggle",
+    "Snuggle",
+    "Cuddle",
+    "Bubble",
+    "Marshmallow",
+    "Lollipop",
+    "Jellybean"
 
 ];
 var grindBand2 = [
@@ -522,7 +562,15 @@ var grindBand2 = [
     "Gangrene",
     "Sepsis",
     "Toxemia",
-    "Viremia"
+    "Viremia",
+    "Hugger",
+    "Kisser",
+    "Snuggler",
+    "Cuddler",
+    "Tickler",
+    "Giggler",
+    "Dancer",
+    "Prancer"
 
 
 
@@ -608,7 +656,15 @@ var blackMetalBand1 = [
     "Primordial",
     "Eternal",
     "Immortal",
-    "Undying"
+    "Undying",
+    "Sparkly",
+    "Glittery",
+    "Fluffy",
+    "Cuddly",
+    "Bubbly",
+    "Giggly",
+    "Silly",
+    "Happy"
 
 
 ];
@@ -699,7 +755,15 @@ var blackMetalBand2 = [
     "Hermitage",
     "Citadel",
     "Keep",
-    "Tower"
+    "Tower",
+    "Unicorn",
+    "Rainbow",
+    "Butterfly",
+    "Kitten",
+    "Puppy",
+    "Bunny",
+    "Teddy",
+    "Muffin"
 
 ];
 
@@ -776,7 +840,15 @@ var stonerBand1 = [
     "Sleep",
     "Wake",
     "Rise",
-    "Fall"
+    "Fall",
+    "Munchies",
+    "Dorito",
+    "Cheeto",
+    "Pizza",
+    "Taco",
+    "Burrito",
+    "Snack",
+    "Cookie"
 
 ];
 
@@ -850,7 +922,15 @@ var stonerBand2 = [
     " Light",
     " Fire",
     " Water",
-    " Earth"
+    " Earth",
+    " Muncher",
+    " Snacker",
+    " Nibbler",
+    " Foodie",
+    " Chef",
+    " Baker",
+    " Cooker",
+    " Taster"
 
 ];
 
@@ -932,7 +1012,15 @@ var punkBand1 = [
     "Amp",
     "Volt",
     "Watt",
-    "Current"
+    "Current",
+    "Silly",
+    "Goofy",
+    "Wacky",
+    "Zany",
+    "Quirky",
+    "Dorky",
+    "Nerdy",
+    "Derpy"
 
 ];
 
@@ -1034,7 +1122,15 @@ var punkBand2 = [
     "Spike",
     "Burst",
     "Blast",
-    "Explosion"
+    "Explosion",
+    "Dorks",
+    "Nerds",
+    "Geeks",
+    "Dweebs",
+    "Goofballs",
+    "Dingdongs",
+    "Weirdos",
+    "Oddballs"
 
 
 ];
