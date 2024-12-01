@@ -5,6 +5,22 @@ class WikiDisplay {
         return array[Math.floor(Math.random() * array.length)];
     }
 
+    static getRandomBandName() {
+        const genres = [
+            { first: metalBand1, second: metalBand2 },
+            { first: powerMetalBand1, second: powerMetalBand2 },
+            { first: blackMetalBand1, second: blackMetalBand2 },
+            { first: grindBand1, second: grindBand2 },
+            { first: stonerBand1, second: stonerBand2 },
+            { first: punkBand1, second: punkBand2 }
+        ];
+
+        const genre = this.randomFrom(genres);
+        const part1 = this.randomFrom(genre.first);
+        const part2 = this.randomFrom(genre.second);
+        return `${part1}_${part2}`;
+    }
+
     static renderPage(bandData) {
         const articleContent = document.getElementById('article-content');
         
@@ -64,17 +80,11 @@ class WikiDisplay {
                  <div class="featured-bands">
                     <h3>Featured Bands</h3>
                     <ul>
-                        <li><a href="#Cryptic_Goat_Ritual">Cryptic Goat Ritual</a></li>
-                        <li><a href="#Necro-Industrial_Flesh_Machine">Necro-Industrial Flesh Machine</a></li>
-                        <li><a href="#Blasphemous_Unicorn_Massacre">Blasphemous Unicorn Massacre</a></li>
-                        <li><a href="#Demonic_Cupcake_Annihilation">Demonic Cupcake Annihilation</a></li>
-                        <li><a href="#Void_Throne_Desecrator">Void Throne Desecrator</a></li>
-                        <li><a href="#Pestilent_Meme_Corruption">Pestilent Meme Corruption</a></li>
-                        <li><a href="#Eldritch_Pizza_Summoners">Eldritch Pizza Summoners</a></li>
-                        <li><a href="#Quantum_Death_Algorithm">Quantum Death Algorithm</a></li>
-                        <li><a href="#Caffeinated_Corpse_Parade">Caffeinated Corpse Parade</a></li>
-                        <li><a href="#Nihilist_Sock_Puppet">Nihilist Sock Puppet</a></li>
-                    
+                        ${Array.from({ length: 10 }, () => {
+                            const bandName = this.getRandomBandName();
+                            return `<li><a href="#${bandName}">${bandName.replace(/_/g, ' ')}</a></li>`;
+                        }).join('\n')}
+                    </ul>
                 </div>`
         } else {
             const content = `
