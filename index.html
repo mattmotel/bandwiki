@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Band Wiki</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; }
+        .wiki-container { display: flex; }
+        .left-nav { width: 200px; padding: 20px; background: #f8f9fa; }
+        .content-area { flex: 1; padding: 20px; }
+        .user-nav { text-align: right; padding: 5px 20px; background: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <!-- User Navigation -->
+    <div class="user-nav">
+        <a href="#">Create account</a> |
+        <a href="#">Log in</a>
+    </div>
+
+    <div class="wiki-container">
+        <!-- Left Navigation -->
+        <div class="left-nav">
+            <h1>Wikipedia</h1>
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="#">Main page</a></li>
+                <li><a href="#">Contents</a></li>
+                <li><a href="#">Random article</a></li>
+                <li><a href="#">About Wikipedia</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-area">
+            <!-- Article Navigation -->
+            <div style="border-bottom: 1px solid #a7d7f9; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <a href="#">Article</a> |
+                        <a href="#">Talk</a>
+                    </div>
+                    <div>
+                        <a href="#">Read</a> |
+                        <a href="#">Edit</a> |
+                        <a href="#">View history</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="article-content">
+                <!-- Generated content will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/display.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Page loaded, initializing wiki...');
+            const wiki = new BandWiki();
+            
+            const updatePage = () => {
+                const bandName = window.location.hash.substring(1).replace(/_/g, ' ');
+                if (bandName) {
+                    console.log('Generating data for:', bandName);
+                    const bandData = wiki.generateBandData(bandName);
+                    WikiDisplay.renderPage(bandData);
+                }
+            };
+
+            window.addEventListener('hashchange', updatePage);
+            updatePage();
+        });
+    </script>
+</body>
+</html>
