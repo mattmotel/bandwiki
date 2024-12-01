@@ -15,10 +15,34 @@ class WikiDisplay {
             { first: punkBand1, second: punkBand2 }
         ];
 
-        const genre = this.randomFrom(genres);
-        const part1 = this.randomFrom(genre.first);
-        const part2 = this.randomFrom(genre.second);
-        return `${part1}_${part2}`;
+        const connectors = ['of', 'from', 'in', 'under', 'beyond'];
+        
+        // Different name patterns
+        const patterns = [
+            // Basic two-word combination
+            () => {
+                const genre = this.randomFrom(genres);
+                return `${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}`;
+            },
+            // Three-word with connector
+            () => {
+                const genre = this.randomFrom(genres);
+                return `${this.randomFrom(genre.first)}_${this.randomFrom(connectors)}_${this.randomFrom(genre.second)}`;
+            },
+            // Double first words
+            () => {
+                const genre = this.randomFrom(genres);
+                return `${this.randomFrom(genre.first)}_${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}`;
+            },
+            // Mix genres
+            () => {
+                const genre1 = this.randomFrom(genres);
+                const genre2 = this.randomFrom(genres);
+                return `${this.randomFrom(genre1.first)}_${this.randomFrom(genre2.second)}`;
+            }
+        ];
+
+        return this.randomFrom(patterns)();
     }
 
     static renderPage(bandData) {
