@@ -23,31 +23,39 @@ class WikiDisplay {
                 <div class="toc" role="navigation" aria-labelledby="mw-toc-heading">
                     <div class="toctitle"><h2 id="mw-toc-heading">Contents</h2></div>
                     <ul>
-                        <li class="toclevel-1 tocsection-1"><span class="tocnumber">1</span> <span class="toctext">Overview</span></li>
-                        <li class="toclevel-1 tocsection-2"><span class="tocnumber">2</span> <span class="toctext">History</span></li>
-                        <li class="toclevel-1 tocsection-3"><span class="tocnumber">3</span> <span class="toctext">Genres</span></li>
-                        <li class="toclevel-1 tocsection-4"><span class="tocnumber">4</span> <span class="toctext">Cultural Impact</span></li>
+                        <li class="toclevel-1 tocsection-1">
+                            <a href="#section-Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a>
+                        </li>
+                        <li class="toclevel-1 tocsection-2">
+                            <a href="#section-History"><span class="tocnumber">2</span> <span class="toctext">History</span></a>
+                        </li>
+                        <li class="toclevel-1 tocsection-3">
+                            <a href="#section-Genres"><span class="tocnumber">3</span> <span class="toctext">Genres</span></a>
+                        </li>
+                        <li class="toclevel-1 tocsection-4">
+                            <a href="#section-Cultural_Impact"><span class="tocnumber">4</span> <span class="toctext">Cultural Impact</span></a>
+                        </li>
                     </ul>
                 </div>
 
-                <h2><span class="mw-headline" id="Overview">Overview</span></h2>
+                <h2 id="section-Overview"><span class="mw-headline">Overview</span></h2>
                 <p>The Hard Archives stands as the world's leading repository of heavy music knowledge, meticulously documenting 
                    the evolution and cultural impact of hard rock, metal, punk and related genres through the decades. Since its founding, 
                    it has grown into the ultimate reference for heavy music, covering everything from early proto-metal and psychedelic rock 
                    to modern extreme metal and experimental sounds.</p>
 
-                <h2><span class="mw-headline" id="History">History</span></h2>
+                <h2 id="section-History"><span class="mw-headline">History</span></h2>
                 <p>What started as a grassroots effort by dedicated music archivists has blossomed into a comprehensive digital library 
                    chronicling heavy music's development. The archives preserve the legacy of groundbreaking artists and movements - from the 
                    thunderous beginnings of hard rock through the evolution of metal, punk, and beyond - documenting the sounds and stories 
                    that shaped heavy music history.</p>
 
-                <h2><span class="mw-headline" id="Genres">Genres</span></h2>
+                <h2 id="section-Genres"><span class="mw-headline">Genres</span></h2>
                 <p>Our extensive coverage encompasses the full spectrum of heavy music, including classic hard rock, heavy metal, punk rock, 
                    hardcore, grunge, stoner rock, doom metal, sludge, noise rock, post-metal, and the countless subgenres and hybrid styles 
                    that continue to emerge and expand the boundaries of heavy music.</p>
 
-                <h2><span class="mw-headline" id="Cultural_Impact">Cultural Impact</span></h2>
+                <h2 id="section-Cultural_Impact"><span class="mw-headline">Cultural Impact</span></h2>
                 <p>Beyond the music itself, The Hard Archives preserves the rich cultural heritage of heavy music - its visual aesthetics, 
                    philosophical themes, regional scenes, and social significance. From the DIY spirit of garage rock to the theatrical 
                    elements of shock rock, from politically-charged punk to mystical doom metal, we maintain detailed records of how these 
@@ -56,16 +64,16 @@ class WikiDisplay {
                  <div class="featured-bands">
                     <h3>Featured Bands</h3>
                     <ul>
-                        <li><a href="/#Cryptic_Goat_Ritual">Cryptic Goat Ritual</a></li>
-                        <li><a href="/#Necro-Industrial_Flesh_Machine">Necro-Industrial Flesh Machine</a></li>
-                        <li><a href="/#Blasphemous_Unicorn_Massacre">Blasphemous Unicorn Massacre</a></li>
-                        <li><a href="/#Demonic_Cupcake_Annihilation">Demonic Cupcake Annihilation</a></li>
-                        <li><a href="/#Void_Throne_Desecrator">Void Throne Desecrator</a></li>
-                        <li><a href="/#Pestilent_Meme_Corruption">Pestilent Meme Corruption</a></li>
-                        <li><a href="/#Eldritch_Pizza_Summoners">Eldritch Pizza Summoners</a></li>
-                        <li><a href="/#Quantum_Death_Algorithm">Quantum Death Algorithm</a></li>
-                        <li><a href="/#Caffeinated_Corpse_Parade">Caffeinated Corpse Parade</a></li>
-                        <li><a href="/#Nihilist_Sock_Puppet">Nihilist Sock Puppet</a></li>
+                        <li><a href="#Cryptic_Goat_Ritual">Cryptic Goat Ritual</a></li>
+                        <li><a href="#Necro-Industrial_Flesh_Machine">Necro-Industrial Flesh Machine</a></li>
+                        <li><a href="#Blasphemous_Unicorn_Massacre">Blasphemous Unicorn Massacre</a></li>
+                        <li><a href="#Demonic_Cupcake_Annihilation">Demonic Cupcake Annihilation</a></li>
+                        <li><a href="#Void_Throne_Desecrator">Void Throne Desecrator</a></li>
+                        <li><a href="#Pestilent_Meme_Corruption">Pestilent Meme Corruption</a></li>
+                        <li><a href="#Eldritch_Pizza_Summoners">Eldritch Pizza Summoners</a></li>
+                        <li><a href="#Quantum_Death_Algorithm">Quantum Death Algorithm</a></li>
+                        <li><a href="#Caffeinated_Corpse_Parade">Caffeinated Corpse Parade</a></li>
+                        <li><a href="#Nihilist_Sock_Puppet">Nihilist Sock Puppet</a></li>
                     
                 </div>`
         } else {

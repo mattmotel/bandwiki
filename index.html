@@ -73,7 +73,14 @@
             const updatePage = () => {
                 // Parse URL and parameters
                 const url = new URL(window.location.href);
-                const bandName = url.hash.substring(1).split('?')[0].replace(/_/g, ' ');
+                const hash = url.hash.substring(1).split('?')[0];
+                
+                // Ignore section links (don't generate band pages for them)
+                if (hash.startsWith('section-')) {
+                    return; // Don't generate a band page for section links
+                }
+
+                const bandName = hash.replace(/_/g, ' ');
                 
                 // Get parameters
                 const params = {};
