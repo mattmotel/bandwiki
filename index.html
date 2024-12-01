@@ -82,14 +82,18 @@
                     params[key] = value;
                 }
 
+                // Call renderPage even if no bandName
                 if (bandName) {
                     const bandData = wiki.generateBandData(bandName, params);
                     WikiDisplay.renderPage(bandData);
+                } else {
+                    // Render the homepage when no band name
+                    WikiDisplay.renderPage(null);
                 }
             };
 
             window.addEventListener('hashchange', updatePage);
-            updatePage();
+            updatePage(); // This will now render the homepage on initial load
         });
     </script>
 </body>

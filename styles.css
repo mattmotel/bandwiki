@@ -183,3 +183,44 @@ a:hover {
 }
 
 .mw-editsection-bracket { color: #54595d; }
+
+.hatnote {
+    font-style: italic;
+    color: #54595d;
+    margin-bottom: 1em;
+}
+
+.wiki-notice {
+    background: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+.toc {
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    padding: 0.5em;
+    display: table;
+    margin: 1em 0;
+}
+
+.toctitle {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.toc ul {
+    list-style: none;
+    padding-left: 1.5em;
+}
+
+.toc span {
+    color: #54595d;
+    margin-right: 0.5em;
+}
+
+.mw-headline {
+    font-weight: normal;
+}

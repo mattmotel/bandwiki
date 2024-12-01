@@ -6,19 +6,65 @@ class WikiDisplay {
     }
 
     static renderPage(bandData) {
-        const content = `
-            <h1 class="firstHeading">${bandData.name}</h1>
-            <div class="siteSub">From Wikipedia, the free encyclopedia</div>
+        const articleContent = document.getElementById('article-content');
+        
+        // If no band data, show Wikipedia-style homepage
+        if (!bandData) {
+            articleContent.innerHTML = `
+                <h1>The Hard Archives</h1>
+                <div class="hatnote">From Wikipedia, the free encyclopedia</div>
+                
+                <div class="wiki-notice">
+                    Welcome to The Hard Archives, the definitive compendium of heavy and extreme music knowledge, documenting everything from classic hard rock to the most intense metal, punk, hardcore, and experimental sounds.
+                </div>
 
-            ${this.renderInfobox(bandData)}
-            ${this.renderIntro(bandData)}
-            ${this.renderHistory(bandData)}
-            ${this.renderMembers(bandData)}
-            ${this.renderDiscography(bandData)}
-        `;
+                <div class="toc">
+                    <div class="toctitle">Contents</div>
+                    <ul>
+                        <li><span>1</span> Overview</li>
+                        <li><span>2</span> History</li>
+                        <li><span>3</span> Genres</li>
+                        <li><span>4</span> Cultural Impact</li>
+                    </ul>
+                </div>
 
-        document.getElementById('article-content').innerHTML = content;
-        document.title = `${bandData.name} - Wikipedia`;
+                <h2><span class="mw-headline">Overview</span></h2>
+                <p>The Hard Archives stands as the world's leading repository of heavy music knowledge, meticulously documenting 
+                   the evolution and cultural impact of hard rock, metal, punk and related genres through the decades. Since its founding, 
+                   it has grown into the ultimate reference for heavy music, covering everything from early proto-metal and psychedelic rock 
+                   to modern extreme metal and experimental sounds.</p>
+
+                <h2><span class="mw-headline">History</span></h2>
+                <p>What started as a grassroots effort by dedicated music archivists has blossomed into a comprehensive digital library 
+                   chronicling heavy music's development. The archives preserve the legacy of groundbreaking artists and movements - from the 
+                   thunderous beginnings of hard rock through the evolution of metal, punk, and beyond - documenting the sounds and stories 
+                   that shaped heavy music history.</p>
+
+                <h2><span class="mw-headline">Genres</span></h2>
+                <p>Our extensive coverage encompasses the full spectrum of heavy music, including classic hard rock, heavy metal, punk rock, 
+                   hardcore, grunge, stoner rock, doom metal, sludge, noise rock, post-metal, and the countless subgenres and hybrid styles 
+                   that continue to emerge and expand the boundaries of heavy music.</p>
+
+                <h2><span class="mw-headline">Cultural Impact</span></h2>
+                <p>Beyond the music itself, The Hard Archives preserves the rich cultural heritage of heavy music - its visual aesthetics, 
+                   philosophical themes, regional scenes, and social significance. From the DIY spirit of garage rock to the theatrical 
+                   elements of shock rock, from politically-charged punk to mystical doom metal, we maintain detailed records of how these 
+                   genres have influenced and reflected the broader culture.</p>`;
+        } else {
+            const content = `
+                <h1 class="firstHeading">${bandData.name}</h1>
+                <div class="siteSub">From Wikipedia, the free encyclopedia</div>
+
+                ${this.renderInfobox(bandData)}
+                ${this.renderIntro(bandData)}
+                ${this.renderHistory(bandData)}
+                ${this.renderMembers(bandData)}
+                ${this.renderDiscography(bandData)}
+            `;
+
+            articleContent.innerHTML = content;
+            document.title = `${bandData.name} - Wikipedia`;
+        }
     }
 
     static renderInfobox(bandData) {
