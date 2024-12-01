@@ -12,7 +12,7 @@ class WikiDisplay {
         if (!bandData) {
             articleContent.innerHTML = `
                 <h1>The Hard Archives</h1>
-                <div class="hatnote">From Wikipedia, the free encyclopedia</div>
+                <div class="hatnote">From Hardpedia, the hard encyclopedia</div>
                 
                 <div class="wiki-notice">
                     Welcome to The Hard Archives, the definitive compendium of heavy and extreme music knowledge, documenting everything from classic hard rock to the most intense metal, punk, hardcore, and experimental sounds.
@@ -79,7 +79,7 @@ class WikiDisplay {
         } else {
             const content = `
                 <h1 class="firstHeading">${bandData.name}</h1>
-                <div class="siteSub">From Wikipedia, the free encyclopedia</div>
+                <div class="siteSub">From Hardpedia, the hard encyclopedia</div>
 
                 ${this.renderInfobox(bandData)}
                 ${this.renderIntro(bandData)}
@@ -89,7 +89,7 @@ class WikiDisplay {
             `;
 
             articleContent.innerHTML = content;
-            document.title = `${bandData.name} - Wikipedia`;
+            document.title = `${bandData.name} - Hard Archives`;
         }
     }
 
