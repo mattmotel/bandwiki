@@ -59,9 +59,19 @@
             const wiki = new BandWiki();
             
             const updatePage = () => {
-                const bandName = window.location.hash.substring(1).replace(/_/g, ' ');
+                // Parse URL and parameters
+                const url = new URL(window.location.href);
+                const bandName = url.hash.substring(1).split('?')[0].replace(/_/g, ' ');
+                
+                // Get parameters
+                const params = {};
+                const searchParams = new URLSearchParams(url.hash.split('?')[1] || '');
+                for (const [key, value] of searchParams) {
+                    params[key] = value;
+                }
+
                 if (bandName) {
-                    const bandData = wiki.generateBandData(bandName);
+                    const bandData = wiki.generateBandData(bandName, params);
                     WikiDisplay.renderPage(bandData);
                 }
             };

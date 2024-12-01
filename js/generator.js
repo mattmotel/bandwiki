@@ -5,16 +5,29 @@ class BandWiki {
         console.log('BandWiki initialized');
     }
 
-    generateBandData(bandName) {
-        const startYear = 1990 + Math.floor(Math.random() * 33); // 1990-2023
-        const origin = this.randomFrom(WikiData.pools.cities.US);
-        const mainGenres = [
-            this.randomFrom(WikiData.pools.genres.metal),
-            this.randomFrom(WikiData.pools.genres.experimental)
-        ];
+    generateBandData(bandName, params = {}) {
+        // Parse parameters with defaults
+        const {
+            genre = this.randomFrom(WikiData.pools.genres.metal),
+            location = this.randomFrom(WikiData.pools.cities.US)
+        } = params;
+
+        const startYear = 1990 + Math.floor(Math.random() * 33);
+        
+        // Use provided parameters or random values
+        const mainGenres = params.genre ? 
+            genre.split('_').join(' ').split(',') : 
+            [
+                this.randomFrom(WikiData.pools.genres.metal),
+                this.randomFrom(WikiData.pools.genres.experimental)
+            ];
+
+        const origin = params.location ? 
+            location.split('_').join(' ') : 
+            this.randomFrom(WikiData.pools.cities.US);
 
         // Generate band history timeline
-        const timeline = this.generateTimeline(startYear, bandName);
+        const timeline = this.generateTimeline(startYear, bandName, origin);
         const members = this.generateMembers(startYear);
 
         return {
@@ -28,14 +41,14 @@ class BandWiki {
         };
     }
 
-    generateTimeline(startYear, bandName) {
+    generateTimeline(startYear, bandName, origin) {
         const events = [];
         let currentYear = startYear;
         
         // Formation year
         events.push({
             year: currentYear,
-            event: `${bandName} was formed in ${currentYear} in ${this.randomFrom(WikiData.pools.cities.US)} by ${this.generatePersonName()} (${this.randomFrom(["vocals", "guitar"])}) 
+            event: `${bandName} was formed in ${currentYear} in ${origin} by ${this.generatePersonName()} (${this.randomFrom(["vocals", "guitar"])}) 
                     and ${this.generatePersonName()} (${this.randomFrom(["drums", "bass"])}). The two met at a local ${this.randomFrom(["hardcore", "metal", "punk"])} show and 
                     bonded over their shared interest in ${this.randomFrom(WikiData.pools.genres.experimental)}. They spent several months rehearsing in a ${this.randomFrom([
                         "converted garage", "basement", "storage unit", "abandoned warehouse"
