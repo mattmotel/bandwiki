@@ -75,33 +75,24 @@
                 const url = new URL(window.location.href);
                 const hash = url.hash.substring(1).split('?')[0];
                 
-                // Ignore section links
-                if (hash.startsWith('section-')) {
-                    return;
-                }
-
-                // Scroll to top when loading a band page
-                if (!hash.startsWith('section-')) {
-                    window.scrollTo(0, 0);
-                }
-
-                const bandName = hash.replace(/_/g, ' ');
-                
-                // Get parameters
+                // Parse parameters
                 const params = {};
                 const searchParams = new URLSearchParams(url.hash.split('?')[1] || '');
                 for (const [key, value] of searchParams) {
                     params[key] = value;
                 }
 
-                // Call renderPage even if no bandName
-                if (bandName) {
-                    const bandData = wiki.generateBandData(bandName, params);
-                    WikiDisplay.renderPage(bandData);
-                } else {
-                    // Render the homepage when no band name
+                // If it's a section link or no hash, render the homepage
+                if (hash.startsWith('section-') || !hash) {
                     WikiDisplay.renderPage(null);
+                    return;
                 }
+
+                // For band names, scroll to top and render band page
+                window.scrollTo(0, 0);
+                const bandName = hash.replace(/_/g, ' ');
+                const bandData = wiki.generateBandData(bandName, params);
+                WikiDisplay.renderPage(bandData);
             };
 
             window.addEventListener('hashchange', updatePage);
