@@ -18,9 +18,9 @@ class WikiDisplay {
         const connectors = ['of', 'from', 'in', 'under', 'Beyond', 'and', 'Against', 'Beneath', 'upon', 'through', 'Within', 'Before', 'After', 'Behind', 'Beside', 'Between', 'Among', 'Without', 'Above', 'Below'];
         const prefixes = ['The', 'Ancient', 'Eternal', 'Ultimate', 'Supreme', 'Primitive', 'Celestial', 'Divine', 'Heretical', 'Toxic', 'Fatal'];
         
-        // Helper to check if word needs to be joined without space
-        const shouldJoin = (word) => {
-            return word.match(/^(tana|consin|vada|achusetts|orado|ifornia|onya)$/);
+        // Helper to check if word is a suffix
+        const isSuffix = (word) => {
+            return ['tana', 'consin', 'vada', 'achusetts', 'orado', 'ifornia', 'onya'].includes(word);
         };
 
         const patterns = [
@@ -29,38 +29,41 @@ class WikiDisplay {
                 const genre = this.randomFrom(genres);
                 const word1 = this.randomFrom(genre.first);
                 const word2 = this.randomFrom(genre.second);
-                return shouldJoin(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
+                return isSuffix(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
             },
             // Three-word with connector
             () => {
                 const genre = this.randomFrom(genres);
                 return `${this.randomFrom(genre.first)}_${this.randomFrom(connectors)}_${this.randomFrom(genre.second)}`;
             },
-            // Mix genres with possible joining
+            // Double first words
+            () => {
+                const genre = this.randomFrom(genres);
+                return `${this.randomFrom(genre.first)}_${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}`;
+            },
+            // Mix genres
             () => {
                 const genre1 = this.randomFrom(genres);
                 const genre2 = this.randomFrom(genres);
                 const word1 = this.randomFrom(genre1.first);
                 const word2 = this.randomFrom(genre2.second);
-                return shouldJoin(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
+                return isSuffix(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
             },
             // With 'The'
             () => {
                 const genre = this.randomFrom(genres);
-                const word2 = this.randomFrom(genre.second);
-                return shouldJoin(word2) ? 
-                    `The_${this.randomFrom(genre.first)}${word2}` : 
-                    `The_${this.randomFrom(genre.first)}_${word2}`;
+                return `The_${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}`;
             },
-            // Prefix with possible joining
+            // Double second words
             () => {
                 const genre = this.randomFrom(genres);
-                const word2 = this.randomFrom(genre.second);
-                return shouldJoin(word2) ? 
-                    `${this.randomFrom(prefixes)}_${this.randomFrom(genre.first)}${word2}` : 
-                    `${this.randomFrom(prefixes)}_${this.randomFrom(genre.first)}_${word2}`;
+                return `${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}_${this.randomFrom(genre.second)}`;
             },
-            // Double adjective with
+            // Prefix with connector
+            () => {
+                const genre = this.randomFrom(genres);
+                return `${this.randomFrom(prefixes)}_${this.randomFrom(genre.first)}_${this.randomFrom(connectors)}_${this.randomFrom(genre.second)}`;
+            }
         ];
 
         return this.randomFrom(patterns)();
