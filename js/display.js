@@ -32,18 +32,35 @@ class WikiDisplay {
             ].includes(word);
         };
 
+        // New helper to get a non-suffix word
+        const getNonSuffixWord = (wordArray) => {
+            let word;
+            do {
+                word = this.randomFrom(wordArray).trim();
+            } while (isSuffix(word));
+            return word;
+        };
+
         const patterns = [
-            // Basic two-word
+            // Basic two-word or suffix (only place suffixes should be used)
             () => {
                 const genre = this.randomFrom(genres);
                 const word1 = this.randomFrom(genre.first).trim();
                 const word2 = this.randomFrom(genre.second).trim();
-                return isSuffix(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
+                if (isSuffix(word2)) {
+                    return `${word1}${word2}`;
+                }
+                return `${word1}_${word2}`;
             },
-            // Three-word with connector
+            // With 'The' (NEVER use suffixes)
             () => {
                 const genre = this.randomFrom(genres);
-                return `${this.randomFrom(genre.first).trim()}_${this.randomFrom(connectors).trim()}_${this.randomFrom(genre.second).trim()}`;
+                return `The_${getNonSuffixWord(genre.first)}_${getNonSuffixWord(genre.second)}`;
+            },
+            // Three-word with connector (NEVER use suffixes)
+            () => {
+                const genre = this.randomFrom(genres);
+                return `${getNonSuffixWord(genre.first)}_${this.randomFrom(connectors)}_${getNonSuffixWord(genre.second)}`;
             },
             // Double first words
             () => {
@@ -57,11 +74,6 @@ class WikiDisplay {
                 const word1 = this.randomFrom(genre1.first).trim();
                 const word2 = this.randomFrom(genre2.second).trim();
                 return isSuffix(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
-            },
-            // With 'The'
-            () => {
-                const genre = this.randomFrom(genres);
-                return `The_${this.randomFrom(genre.first).trim()}_${this.randomFrom(genre.second).trim()}`;
             },
             // Double second words
             () => {
