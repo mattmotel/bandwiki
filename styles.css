@@ -295,3 +295,33 @@ a:hover {
         font-size: 80%;
     }
 }
+
+
+.wiki-footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1em 24px;
+    border-top: 1px solid #a2a9b1;
+    color: #54595d;
+    font-size: 0.75em;
+    clear: both;
+}
+
+.footer-info {
+    margin-bottom: 0.5em;
+}
+
+.footer-places {
+    line-height: 1.6;
+}
+
+.wiki-footer a {
+    color: #0645ad;
+}
+
+/* Add mobile styles for footer */
+@media screen and (max-width: 768px) {
+    .wiki-footer {
+        padding: 1em 12px;
+    }
+}
