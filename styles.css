@@ -1,55 +1,175 @@
-/* Wikipedia-style CSS */
+/* Wikipedia-specific styling */
 body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', sans-serif;
+    font-size: 0.875rem;
     line-height: 1.6;
     background: #f8f9fa;
 }
 
+/* Top Navigation */
+.user-nav {
+    text-align: right;
+    padding: 5px 20px;
+    background: #f8f9fa;
+    font-size: 0.75rem;
+    border-bottom: 1px solid #a7d7f9;
+}
+
+.user-nav a {
+    color: #36c;
+    text-decoration: none;
+}
+
+/* Main Layout */
 .wiki-container {
     display: flex;
-    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
+/* Left Navigation */
 .left-nav {
     width: 176px;
-    padding: 20px;
+    padding: 24px 0 0 24px;
     background: #f8f9fa;
-    border-right: 1px solid #a7d7f9;
+    flex-shrink: 0;
 }
 
-.main-content {
-    flex: 1;
-    padding: 20px;
+.left-nav h1 {
+    font-family: 'Linux Libertine', Georgia, Times, serif;
+    font-size: 1.6em;
+    margin-bottom: 5px;
+}
+
+.left-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.left-nav li {
+    padding: 3px 0;
+}
+
+.left-nav a {
+    color: #0645ad;
+    text-decoration: none;
+}
+
+/* Content Area */
+.content-area {
     background: white;
-    max-width: 960px;
+    flex: 1;
+    padding: 1.25em 1.5em 1.5em 1.5em;
+    border: 1px solid #a7d7f9;
+    border-right: 0;
 }
 
-.wiki-header {
-    height: 40px;
-    background: #f8f9fa;
+/* Article Navigation */
+.article-tabs {
     border-bottom: 1px solid #a7d7f9;
-    padding: 0 20px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    margin-bottom: 1em;
+    font-size: 0.875rem;
 }
 
-.page-tabs {
-    border-bottom: 1px solid #a7d7f9;
+.article-tabs ul {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
+.article-tabs li {
+    padding: 5px 6px;
+}
+
+.article-tabs li.selected {
+    background: white;
+    border: 1px solid #a7d7f9;
+    border-bottom: 1px solid white;
+    margin-bottom: -1px;
+}
+
+/* Article Content */
+.firstHeading {
+    font-family: 'Linux Libertine', Georgia, Times, serif;
+    font-size: 1.8em;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.siteSub {
+    font-size: 0.85em;
+    color: #54595d;
+    margin-bottom: 1em;
+}
+
+/* Infobox */
 .infobox {
-    float: right;
-    margin: 0.5em 0 1em 1em;
     border: 1px solid #a2a9b1;
     background-color: #f8f9fa;
+    color: black;
+    margin: 0.5em 0 0.5em 1em;
     padding: 0.2em;
+    float: right;
+    clear: right;
     width: 22em;
+    font-size: 88%;
+    line-height: 1.5em;
 }
 
-/* ... more styles ... */
+.infobox caption {
+    font-size: 125%;
+    font-weight: bold;
+    padding: 0.2em;
+    text-align: center;
+    background: #f8f9fa;
+}
+
+.infobox th {
+    vertical-align: top;
+    text-align: left;
+    padding: 0.2em;
+    background: #eaecf0;
+}
+
+.infobox td {
+    vertical-align: top;
+    padding: 0.2em;
+}
+
+/* Headers */
+h2 {
+    font-family: 'Linux Libertine', Georgia, Times, serif;
+    border-bottom: 1px solid #a2a9b1;
+    font-size: 1.5em;
+    margin: 1em 0 0.5em;
+}
+
+h3 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+}
+
+/* Links */
+a {
+    color: #0645ad;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* References */
+.references {
+    font-size: 90%;
+}
+
+.references ol {
+    padding-left: 2em;
+}
