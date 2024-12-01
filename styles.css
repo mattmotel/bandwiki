@@ -224,3 +224,74 @@ a:hover {
 .mw-headline {
     font-weight: normal;
 }
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .wiki-container {
+        flex-direction: column;
+    }
+
+    .left-nav {
+        display: none;
+    }
+
+    .content-area {
+        border-left: 0;
+        padding: 12px;
+    }
+
+    .infobox {
+        float: none;
+        width: 100%;
+        margin: 0.5em 0;
+    }
+
+    .article-tabs ul {
+        flex-wrap: wrap;
+    }
+
+    .article-tabs li {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    .firstHeading {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .toc {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .user-nav {
+        display: none;
+    }
+}
+
+/* Small Mobile Styles */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 0.8125rem;
+    }
+
+    .content-area {
+        padding: 8px;
+    }
+
+    .firstHeading {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .infobox {
+        font-size: 80%;
+    }
+}
