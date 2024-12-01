@@ -173,3 +173,13 @@ a:hover {
 .references ol {
     padding-left: 2em;
 }
+
+.mw-editsection {
+    float: right;
+    font-size: small;
+    line-height: 1.6;
+    font-weight: normal;
+    margin-left: 1em;
+}
+
+.mw-editsection-bracket { color: #54595d; }

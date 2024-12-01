@@ -14,6 +14,7 @@ class WikiDisplay {
             ${this.renderIntro(bandData)}
             ${this.renderHistory(bandData)}
             ${this.renderMembers(bandData)}
+            ${this.renderReferences(bandData)}
         `;
 
         document.getElementById('article-content').innerHTML = content;
@@ -124,6 +125,63 @@ class WikiDisplay {
                     `).join('')}
                 </ul>
             ` : ''}
+        `;
+    }
+
+    static renderTableOfContents(sections) {
+        return `
+            <div class="toc" role="navigation" aria-labelledby="mw-toc-heading">
+                <div class="toctitle"><h2 id="mw-toc-heading">Contents</h2></div>
+                <ul>
+                    <li class="toclevel-1 tocsection-1"><a href="#History"><span class="tocnumber">1</span> <span class="toctext">History</span></a></li>
+                    <li class="toclevel-1 tocsection-2"><a href="#Musical_style"><span class="tocnumber">2</span> <span class="toctext">Musical style</span></a></li>
+                    <li class="toclevel-1 tocsection-3"><a href="#Members"><span class="tocnumber">3</span> <span class="toctext">Members</span></a></li>
+                    <li class="toclevel-1 tocsection-4"><a href="#Discography"><span class="tocnumber">4</span> <span class="toctext">Discography</span></a></li>
+                    <li class="toclevel-1 tocsection-5"><a href="#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+                </ul>
+            </div>
+        `;
+    }
+
+    static renderCategories(bandData) {
+        return `
+            <div id="catlinks" class="catlinks">
+                <div class="mw-normal-catlinks">
+                    <a href="#">Categories</a>: 
+                    <ul>
+                        <li><a href="#">${bandData.startYear}s music groups</a></li>
+                        <li><a href="#">American ${bandData.genres[0].toLowerCase()} musical groups</a></li>
+                        <li><a href="#">Musical groups from ${bandData.origin}</a></li>
+                        <li><a href="#">Musical groups established in ${bandData.startYear}</a></li>
+                    </ul>
+                </div>
+            </div>
+        `;
+    }
+
+    static renderReferences(bandData) {
+        return `
+            <h2><span class="mw-headline" id="References">References</span></h2>
+            <div class="reflist columns references-column-width" style="column-width: 30em;">
+                <ol class="references">
+                    <li id="cite_note-1"><span class="mw-cite-backlink"><a href="#">^</a></span> <span class="reference-text">"${bandData.name} | Biography & History | AllMusic". AllMusic.</span></li>
+                    <li id="cite_note-2"><span class="mw-cite-backlink"><a href="#">^</a></span> <span class="reference-text">"${bandData.name} Interview". The Wire. ${bandData.startYear + 2}.</span></li>
+                    <li id="cite_note-3"><span class="mw-cite-backlink"><a href="#">^</a></span> <span class="reference-text">"Reviews: ${bandData.name}". Pitchfork.</span></li>
+                </ol>
+            </div>
+        `;
+    }
+
+    static renderSectionHeading(title, id) {
+        return `
+            <h2>
+                <span class="mw-headline" id="${id}">${title}</span>
+                <span class="mw-editsection">
+                    <span class="mw-editsection-bracket">[</span>
+                    <a href="#" title="Edit section: ${title}">edit</a>
+                    <span class="mw-editsection-bracket">]</span>
+                </span>
+            </h2>
         `;
     }
 } 
