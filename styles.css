@@ -325,3 +325,24 @@ a:hover {
         padding: 1em 12px;
     }
 }
+
+/* Add this to your CSS */
+.featured-bands {
+    margin: 1em 0;
+}
+
+.featured-bands ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5em 2em;
+}
+
+/* Mobile view - single column */
+@media screen and (max-width: 768px) {
+    .featured-bands ul {
+        grid-template-columns: 1fr;
+    }
+}

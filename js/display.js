@@ -117,9 +117,9 @@ class WikiDisplay {
                    genres have influenced and reflected the broader culture.
                 </p>
                  <div class="featured-bands">
-                    <h3>Featured Bands</h3>
+                    <h2>Featured Bands</h2>
                     <ul>
-                        ${Array.from({ length: 20 }, () => {
+                        ${Array.from({ length: 30 }, () => {
                             const bandName = this.getRandomBandName();
                             return `<li><a href="#${bandName}">${bandName.replace(/_/g, ' ')}</a></li>`;
                         }).join('\n')}
