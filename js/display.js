@@ -20,7 +20,16 @@ class WikiDisplay {
         
         // Helper to check if word is a suffix
         const isSuffix = (word) => {
-            return ['tana', 'consin', 'vada', 'achusetts', 'orado', 'ifornia', 'onya'].includes(word);
+            return [
+                'tana',      // Montana
+                'consin',    // Wisconsin
+                'vada',      // Nevada
+                'achusetts', // Massachusetts
+                'orado',     // Colorado
+                'ifornia',   // California
+                'abama',     // Alabama (adding this!)
+                'onya'       // Sonya
+            ].includes(word);
         };
 
         const patterns = [
