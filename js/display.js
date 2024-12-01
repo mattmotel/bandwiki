@@ -27,46 +27,50 @@ class WikiDisplay {
             // Basic two-word
             () => {
                 const genre = this.randomFrom(genres);
-                const word1 = this.randomFrom(genre.first);
-                const word2 = this.randomFrom(genre.second);
+                const word1 = this.randomFrom(genre.first).trim();
+                const word2 = this.randomFrom(genre.second).trim();
                 return isSuffix(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
             },
             // Three-word with connector
             () => {
                 const genre = this.randomFrom(genres);
-                return `${this.randomFrom(genre.first)}_${this.randomFrom(connectors)}_${this.randomFrom(genre.second)}`;
+                return `${this.randomFrom(genre.first).trim()}_${this.randomFrom(connectors).trim()}_${this.randomFrom(genre.second).trim()}`;
             },
             // Double first words
             () => {
                 const genre = this.randomFrom(genres);
-                return `${this.randomFrom(genre.first)}_${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}`;
+                return `${this.randomFrom(genre.first).trim()}_${this.randomFrom(genre.first).trim()}_${this.randomFrom(genre.second).trim()}`;
             },
             // Mix genres
             () => {
                 const genre1 = this.randomFrom(genres);
                 const genre2 = this.randomFrom(genres);
-                const word1 = this.randomFrom(genre1.first);
-                const word2 = this.randomFrom(genre2.second);
+                const word1 = this.randomFrom(genre1.first).trim();
+                const word2 = this.randomFrom(genre2.second).trim();
                 return isSuffix(word2) ? `${word1}${word2}` : `${word1}_${word2}`;
             },
             // With 'The'
             () => {
                 const genre = this.randomFrom(genres);
-                return `The_${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}`;
+                return `The_${this.randomFrom(genre.first).trim()}_${this.randomFrom(genre.second).trim()}`;
             },
             // Double second words
             () => {
                 const genre = this.randomFrom(genres);
-                return `${this.randomFrom(genre.first)}_${this.randomFrom(genre.second)}_${this.randomFrom(genre.second)}`;
+                return `${this.randomFrom(genre.first).trim()}_${this.randomFrom(genre.second).trim()}_${this.randomFrom(genre.second).trim()}`;
             },
             // Prefix with connector
             () => {
                 const genre = this.randomFrom(genres);
-                return `${this.randomFrom(prefixes)}_${this.randomFrom(genre.first)}_${this.randomFrom(connectors)}_${this.randomFrom(genre.second)}`;
+                return `${this.randomFrom(prefixes).trim()}_${this.randomFrom(genre.first).trim()}_${this.randomFrom(connectors).trim()}_${this.randomFrom(genre.second).trim()}`;
             }
         ];
 
-        return this.randomFrom(patterns)();
+        // Clean up any potential double underscores or spaces
+        return this.randomFrom(patterns)()
+            .replace(/\s+/g, '_')     // Replace any spaces with underscores
+            .replace(/__+/g, '_')     // Replace multiple underscores with single
+            .replace(/^_|_$/g, '');   // Remove leading/trailing underscores
     }
 
     static renderPage(bandData) {
