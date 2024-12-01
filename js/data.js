@@ -61,7 +61,12 @@ class WikiData {
                 "Tyler, Texas", "Vancouver, Washington",
                 "Ventura, California", "Virginia Beach, Virginia",
                 "Waco, Texas", "Winston-Salem, North Carolina",
-                "Yakima, Washington", "Yuma, Arizona"
+                "Yakima, Washington", "Yuma, Arizona",
+                "Reykjavik, Iceland",
+                "Marrakech, Morocco",
+                "Kathmandu, Nepal",
+                "Albuquerque, New Mexico",
+                "Anchorage, Alaska"
             ]
         },
         genres: {
@@ -120,7 +125,8 @@ class WikiData {
                 "Post-Deathcore", "Blackgaze Deathcore",
                 "Doom Deathcore", "Death-Doom Deathcore",
                 "Sludge Deathcore", "Stoner Deathcore",
-                "Progressive Death-Doom", "Funeral Death-Doom"
+                "Progressive Death-Doom", "Funeral Death-Doom",
+                "Blackgaze", "Post-Metal", "Drone", "Sludge", "Mathcore", "Folk Metal", "Industrial", "Symphonic", "Gothic", "Prog", "Tech Death", "Melodeath", "Deathcore", "Crossover", "Thrashcore"
             ],
             experimental: [
                 // Original genres
@@ -229,7 +235,8 @@ class WikiData {
             "Aurora Borealis", "Vendetta Records", "Grindcore Karaoke",
             "Robotic Empire", "Magic Bullet Records", "Level Plane Records",
             "Revelation Records", "Bridge Nine Records", "Tankcrimes",
-            "Prosthetic Records", "Willowtip Records", "Unique Leader"
+            "Prosthetic Records", "Willowtip Records", "Unique Leader",
+            "Profound Lore", "Nuclear Blast", "Season of Mist"
         ],
         names: {
             first: [
@@ -262,7 +269,7 @@ class WikiData {
                 "Shane", "Shawn", "Stephen", "Steven", "Taylor",
                 "Thomas", "Timothy", "Todd", "Travis", "Trevor",
                 "Tyler", "Victor", "Vincent", "Walter", "Wayne",
-                "Wesley", "William", "Zachary"
+                "Wesley", "William", "Zachary", "Aaron", "Seth"
             ],
             last: [
                 // Original last names
@@ -296,7 +303,8 @@ class WikiData {
                 "Meyer", "Miller", "Mills", "Mitchell", "Moore",
                 "Morgan", "Morris", "Morrison", "Murphy", "Murray",
                 "Nelson", "Newman", "Nielsen", "O'Brien", "O'Connor",
-                "Oliver", "Olson", "Palmer", "Parker", "Patterson"
+                "Oliver", "Olson", "Palmer", "Parker", "Patterson",
+                "Young", "Hall", "Walker"
             ]
         },
         albumWords: [
@@ -326,7 +334,8 @@ class WikiData {
             "Wrath", "Wretch", "Writhing", "Zombie", "Abyssal",
             "Accursed", "Baleful", "Barbaric", "Bestial", "Blasphemous",
             "Bloodied", "Cadaverous", "Catastrophic", "Corrupted",
-            "Desolate", "Diabolical", "Doomed", "Draconian", "Ethereal"
+            "Desolate", "Diabolical", "Doomed", "Draconian", "Ethereal",
+            "Throne", "Winter", "Grave", "Caverns of the Ancient Dead", "Ritualistic Descent"
         ],
         albumTitles: [
             // Original titles
@@ -431,7 +440,8 @@ class WikiData {
             "Wrath of the Ancient Ones",
             "Written in Blood",
             "Ye Old Black Arts",
-            "Zealot's Curse"
+            "Zealot's Curse",
+            "Caverns of the Ancient Dead", "Ritualistic Descent"
         ]
     }
 }
