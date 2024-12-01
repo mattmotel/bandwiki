@@ -75,9 +75,14 @@
                 const url = new URL(window.location.href);
                 const hash = url.hash.substring(1).split('?')[0];
                 
-                // Ignore section links (don't generate band pages for them)
+                // Ignore section links
                 if (hash.startsWith('section-')) {
-                    return; // Don't generate a band page for section links
+                    return;
+                }
+
+                // Scroll to top when loading a band page
+                if (!hash.startsWith('section-')) {
+                    window.scrollTo(0, 0);
                 }
 
                 const bandName = hash.replace(/_/g, ' ');
