@@ -6,10 +6,10 @@ class BandWiki {
     }
 
     generateBandData(bandName, params = {}) {
-        // Parse parameters with defaults
         const {
             genre = this.randomFrom(WikiData.pools.genres.metal),
-            location = this.randomFrom(WikiData.pools.cities.US)
+            location = this.randomFrom(WikiData.pools.cities.US),
+            album = null
         } = params;
 
         const startYear = 1990 + Math.floor(Math.random() * 33);
@@ -30,6 +30,9 @@ class BandWiki {
         const timeline = this.generateTimeline(startYear, bandName, origin);
         const members = this.generateMembers(startYear);
 
+        // Generate discography
+        const discography = this.generateDiscography(startYear, album);
+
         return {
             name: bandName,
             origin: origin,
@@ -37,7 +40,8 @@ class BandWiki {
             yearsActive: `${startYear}–present`,
             labels: [this.randomFrom(WikiData.pools.labels)],
             members: members,
-            history: timeline
+            history: timeline,
+            discography: discography
         };
     }
 
@@ -193,5 +197,68 @@ class BandWiki {
             () => `${this.randomFrom(words)} of the ${this.randomFrom(words)}`
         ];
         return this.randomFrom(patterns)();
+    }
+
+    generateDiscography(startYear, specificAlbum = null) {
+        const albums = [];
+        let currentYear = startYear;
+
+        // Demo/EP
+        albums.push({
+            year: currentYear,
+            type: "Demo",
+            title: this.generateAlbumName(),
+            label: "Self-released",
+            notes: this.randomFrom([
+                "Limited to 100 cassettes",
+                "Released digitally on Bandcamp",
+                "Limited CDR release",
+                "Underground tape trading only"
+            ])
+        });
+
+        currentYear += 1;
+
+        // First album (either specific or random)
+        albums.push({
+            year: currentYear,
+            type: "Studio album",
+            title: specificAlbum ? specificAlbum.replace(/_/g, ' ') : this.generateAlbumName(),
+            label: this.randomFrom(WikiData.pools.labels),
+            notes: this.randomFrom([
+                "First full-length release",
+                "Recorded live to tape",
+                "Produced by " + this.generatePersonName(),
+                "Featured guest appearances from " + this.generatePersonName()
+            ])
+        });
+
+        // Generate 2-4 more albums
+        const additionalAlbums = 2 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < additionalAlbums; i++) {
+            currentYear += 1 + Math.floor(Math.random() * 2);
+            albums.push({
+                year: currentYear,
+                type: this.randomFrom([
+                    "Studio album",
+                    "EP",
+                    "Split album",
+                    "Live album"
+                ]),
+                title: this.generateAlbumName(),
+                label: this.randomFrom(WikiData.pools.labels),
+                notes: this.randomFrom([
+                    "Recorded at " + this.randomFrom(["Electrical Audio", "GodCity", "Soma Studios"]),
+                    "Produced by " + this.generatePersonName(),
+                    "Featured collaborative tracks with " + this.generateBandName(),
+                    "Limited vinyl release of 500 copies",
+                    "Recorded during quarantine",
+                    "Mixed by " + this.generatePersonName(),
+                    "Mastered at " + this.randomFrom(["Mammoth Sound", "GodCity", "Machines with Magnets"])
+                ])
+            });
+        }
+
+        return albums;
     }
 } 

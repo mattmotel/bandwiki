@@ -14,6 +14,7 @@ class WikiDisplay {
             ${this.renderIntro(bandData)}
             ${this.renderHistory(bandData)}
             ${this.renderMembers(bandData)}
+            ${this.renderDiscography(bandData)}
             ${this.renderReferences(bandData)}
         `;
 
@@ -125,6 +126,39 @@ class WikiDisplay {
                     `).join('')}
                 </ul>
             ` : ''}
+        `;
+    }
+
+    static renderDiscography(bandData) {
+        if (!bandData.discography) return '';
+        
+        return `
+            <h2>
+                <span class="mw-headline" id="Discography">Discography</span>
+                <span class="mw-editsection">
+                    <span class="mw-editsection-bracket">[</span>
+                    <a href="#" title="Edit section: Discography">edit</a>
+                    <span class="mw-editsection-bracket">]</span>
+                </span>
+            </h2>
+            <table class="wikitable">
+                <tr>
+                    <th>Year</th>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Label</th>
+                    <th>Notes</th>
+                </tr>
+                ${bandData.discography.map(album => `
+                    <tr>
+                        <td>${album.year}</td>
+                        <td><i>${album.title}</i></td>
+                        <td>${album.type}</td>
+                        <td>${album.label}</td>
+                        <td>${album.notes}</td>
+                    </tr>
+                `).join('')}
+            </table>
         `;
     }
 
